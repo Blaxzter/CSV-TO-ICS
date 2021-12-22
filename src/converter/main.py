@@ -29,20 +29,20 @@ def get_csv_file():
             ("comma separated values", "*.csv"),
             ("all files", "*.*")))
 
-    print(_file_name)
+    # print(_file_name)
     return _file_name
 
 
 def read_csv_file(_file_path):
     _file_encoding = get_file_encoding(_file_path)
-    print(_file_encoding)
+    # print(_file_encoding)
 
     _content = []
     reader = csv.DictReader(open(_file_path, 'r', encoding = _file_encoding.get('encoding')))
     for line in reader:
         _content.append(line)
 
-    print(_content)
+    # print(_content)
     return _content
 
 
