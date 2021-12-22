@@ -1,7 +1,5 @@
 import csv
 from datetime import timedelta, date
-from tkinter import *
-from tkinter import filedialog
 
 from arrow import arrow
 from chardet import UniversalDetector
@@ -20,17 +18,17 @@ def get_file_encoding(file_path: str) -> dict:
     return detector.result
 
 
-def get_csv_file():
-    root.update()
-    _file_name = filedialog.askopenfilename(
-        initialdir = "",
-        title = "Select file",
-        filetypes = (
-            ("comma separated values", "*.csv"),
-            ("all files", "*.*")))
-
-    # print(_file_name)
-    return _file_name
+# def get_csv_file():
+#     root.update()
+#     _file_name = filedialog.askopenfilename(
+#         initialdir = "",
+#         title = "Select file",
+#         filetypes = (
+#             ("comma separated values", "*.csv"),
+#             ("all files", "*.*")))
+#
+#     # print(_file_name)
+#     return _file_name
 
 
 def read_csv_file(_file_path):
@@ -119,10 +117,10 @@ def create_ics_file(csv_list: list):
 
 
 def file_save(_ics_file, file_name = None):
-    if file_name is None:
-        ics_save_file = filedialog.asksaveasfilename(defaultextension = ".ics")
-    else:
-        ics_save_file = file_name
+    #    if file_name is None:
+    #    ics_save_file = filedialog.asksaveasfilename(defaultextension = ".ics")
+    #else:
+    ics_save_file = file_name
 
     if ics_save_file is None:  # asksaveasfile return `None` if dialog closed with "cancel".
         return
@@ -131,8 +129,8 @@ def file_save(_ics_file, file_name = None):
 
 
 def parse_file(temp_file_path, save_file = None):
-    root = Tk()
-    root.withdraw()
+    # root = Tk()
+    # root.withdraw()
 
     csv_content = read_csv_file(temp_file_path)
     ics_file = create_ics_file(csv_content)
