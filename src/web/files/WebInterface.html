@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Natural Language Prover</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css"/>
+
+    <style>
+        html {
+            height: 100%
+        }
+
+        main {
+            max-width: 800px;
+            min-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id="app">
+        <main>
+
+            <header>
+                <h1>CSV to ICS Converter</h1>
+            </header>
+
+            <div class="container">
+                <form action="/file-upload"
+                      id="my-dropzone"
+                      class="dropzone"></form>
+            </div>
+        </main>
+    </div>
+</div>
+
+</body>
+<script>
+    Dropzone.autoDiscover = false;
+    var app = new Vue({
+        el: '#app',
+        mounted() {
+            let myDropzone = new Dropzone("#my-dropzone", {
+                acceptedFiles: '.csv'
+            });
+            myDropzone.on("success", function (file, responseText) {
+
+                const element = document.createElement('a');
+                element.setAttribute('href', 'data:text/calendar;charset=utf-8,' + encodeURIComponent(responseText));
+                element.setAttribute('download', file.name.replace(".csv", ".ics"));
+
+                element.style.display = 'none';
+                document.body.appendChild(element);
+
+                element.click();
+
+                document.body.removeChild(element);
+            });
+        }
+    })
+</script>
+</html>

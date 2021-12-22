@@ -1,0 +1,12 @@
+arrow==0.14.7
+chardet==4.0.0
+ics==0.7
+ics-vtimezones==2020.1
+importlib-resources==1.5.0
+python-dateutil==2.8.1
+pytz==2020.5
+six==1.15.0
+TatSu==5.5.0
+
+pyramid~=2.0
+setuptools==60.0.3

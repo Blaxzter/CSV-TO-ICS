@@ -1,0 +1,20 @@
+version: "3.3"
+
+networks:
+  nginx-net:
+    external:
+      name: nginx-net
+
+services:
+  frontend:
+    build: .
+    restart:
+      always
+    ports:
+      - "6544:6544"
+    networks:
+      - nginx-net
+    environment:
+      VIRTUAL_HOST: csvtoics.fabraham.dev
+      LETSENCRYPT_HOST: csvtoics.fabraham.dev
+      LETSENCRYPT_EMAIL: mail@fabraham.dev
