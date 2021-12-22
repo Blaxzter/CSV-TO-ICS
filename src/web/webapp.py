@@ -13,7 +13,7 @@ from pyramid.config import Configurator
 from pyramid.request import Request
 from pyramid.response import Response, FileResponse
 
-from src.converter.main import parse_file
+from converter.main import parse_file
 
 
 def get_main_page(request):
